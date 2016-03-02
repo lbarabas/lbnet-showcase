@@ -75,7 +75,7 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fb-icon" translatesAutoresizingMaskIntoConstraints="NO" id="wxN-ua-d5N">
                                                 <rect key="frame" x="0.0" y="17" width="65" height="65"/>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cRX-tG-wvJ" customClass="MaterialButton" customModule="lbnet_showcase" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cRX-tG-wvJ" customClass="MaterialButton" customModule="lbnet_showcase" customModuleProvider="target">
                                                 <rect key="frame" x="125" y="33" width="395" height="33"/>
                                                 <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="NotoSans-Bold" family="Noto Sans" pointSize="15"/>
@@ -342,6 +342,7 @@
                                         <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="descriptionText" destination="aRO-B4-LOf" id="AXX-Cv-U2A"/>
+                                            <outlet property="likeImg" destination="lAA-zT-vWD" id="fTc-wS-Oiv"/>
                                             <outlet property="likesLbl" destination="mzd-b7-fbJ" id="3BR-3d-2kk"/>
                                             <outlet property="profileImg" destination="kKR-ia-2jJ" id="hxQ-6r-vUP"/>
                                             <outlet property="showcaseImg" destination="e1Z-gI-kks" id="4Y8-ro-djh"/>
