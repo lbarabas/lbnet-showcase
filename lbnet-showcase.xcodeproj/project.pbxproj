@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2FFF004C25B518AE03532F47 /* Pods_lbnet_showcase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83066D5C142E0FD023562FAB /* Pods_lbnet_showcase.framework */; };
+		3114CEAA1C87F9C400684D4A /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3114CEA91C87F9C400684D4A /* ProfileVC.swift */; };
 		3189AD101C82B934008EC002 /* DataSerview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189AD0F1C82B934008EC002 /* DataSerview.swift */; };
 		31AE5E3B1C80254800CD668E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE5E3A1C80254800CD668E /* AppDelegate.swift */; };
 		31AE5E3D1C80254800CD668E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE5E3C1C80254800CD668E /* ViewController.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3114CEA91C87F9C400684D4A /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		3189AD0F1C82B934008EC002 /* DataSerview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSerview.swift; sourceTree = "<group>"; };
 		31AE5E371C80254800CD668E /* lbnet-showcase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lbnet-showcase.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		31AE5E3A1C80254800CD668E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			children = (
 				31AE5E3C1C80254800CD668E /* ViewController.swift */,
 				31DEC5621C8422EE00D1A985 /* FeedVC.swift */,
+				3114CEA91C87F9C400684D4A /* ProfileVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				31AE5E3B1C80254800CD668E /* AppDelegate.swift in Sources */,
 				31AE5E5C1C80294900CD668E /* Constants.swift in Sources */,
 				31AE5E5E1C80FF5000CD668E /* MaterialButton.swift in Sources */,
+				3114CEAA1C87F9C400684D4A /* ProfileVC.swift in Sources */,
 				31DEC5671C853CF500D1A985 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -443,6 +447,7 @@
 			baseConfigurationReference = BBE974F77CF19CDB2F233B29 /* Pods-lbnet-showcase.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/lbnet-showcase",
@@ -459,6 +464,7 @@
 			baseConfigurationReference = 85F65F60BEE0A7968495BDA9 /* Pods-lbnet-showcase.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/lbnet-showcase",

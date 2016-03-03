@@ -44,7 +44,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
             self.posts = []
             if let snapshots = snapshot.children.allObjects as? [FDataSnapshot] {
                 for snap in snapshots {
-                    print("SNAP: \(snap)")
+                    //print("SNAP: \(snap)")
                     
                     if let postDict = snap.value as? Dictionary<String,AnyObject> {
                         let key = snap.key
@@ -180,6 +180,26 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
             "description": postField.text!,
             "likes": 0
         ]
+        
+        // this should be the UID for the user that is logged on to the application
+        if let uid = NSUserDefaults.standardUserDefaults().valueForKey(KEY_UID) as? String {
+            post["postedByUID"] = uid
+        }
+        
+        // should capture the time UTC of the post so they could be ordered (?),
+        /*
+        let date = NSDate()
+        let formatter = NSDateFormatter();
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZ";
+        let defaultTimeZoneStr = formatter.stringFromDate(date);
+        print(defaultTimeZoneStr)
+        
+        formatter.timeZone = NSTimeZone(abbreviation: "UTC");
+        let utcTimeZoneStr = formatter.stringFromDate(date);
+        print(utcTimeZoneStr)
+        */
+        
+        // but in reality we should use the time on the Firebase server as user's time may not be accurate
         
         if imgUrl != nil {
             post["imageUrl"] = imgUrl!

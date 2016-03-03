@@ -17,14 +17,16 @@ class Post {
     private var _username: String!
     private var _postKey: String!
     private var _postRef: Firebase!
+    private var _postedByUID: String?
     
     var postDescription: String { return _postDescription }
     var imageURL: String? { return _imageURL }
     var likes: Int { return _likes }
     var userName: String { return _username }
     var postKey: String { return _postKey }
+    var postedByUID: String? { return _postedByUID } //in theory there will be always someone who posted, except in case of test data when we don't have anyone
     
-    
+    // this is not being used at the moment
     init (description: String, imageURL: String?, username: String) {
         _postDescription = description
         _imageURL = imageURL
@@ -36,7 +38,9 @@ class Post {
         if let likes = dictionary["likes"] as? Int { _likes = likes } else { _likes = 0  } //so the app won't crash if "likes" is not in the data structure
         if let imgURL = dictionary["imageUrl"] as? String { _imageURL = imgURL }
         if let desc = dictionary["description"] as? String { _postDescription = desc }
-  
+        
+        if let postedByUID = dictionary["postedByUID"] as? String { _postedByUID = postedByUID }
+        
         self._postRef = DataService.ds.REF_POSTS.childByAppendingPath(self._postKey)
         
     }

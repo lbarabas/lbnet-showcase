@@ -36,4 +36,20 @@ class DataService {
         REF_USERS.childByAppendingPath(uid).setValue(user)
         
     }
+    
+    func updateFirebaseUser (nickname: String) {
+        
+        let post : Dictionary<String,AnyObject> = [ "nickname": nickname]
+        REF_USER_CURRENT.setValue(post)
+        
+    }
+    
+    func printMyInfo () {
+        let uid = NSUserDefaults.standardUserDefaults().valueForKey(KEY_UID) as! String
+        let user = Firebase(url: "\(URL_BASE)").childByAppendingPath("users").childByAppendingPath(uid)
+        
+        print(user)
+        
+    }
+    
 }

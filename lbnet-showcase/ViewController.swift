@@ -66,8 +66,7 @@ class ViewController: UIViewController {
                         let user = ["provider": authData.provider!, "blah":"test"]
                         DataService.ds.createFirebaseUser(authData.uid, user: user)
                         
-                        
-                        
+                        // saving the UID for the logged in user
                         NSUserDefaults.standardUserDefaults().setValue(authData.uid, forKey: KEY_UID)
                         
                         self.performSegueWithIdentifier(SEGUE_LOGGED_IN, sender: nil)

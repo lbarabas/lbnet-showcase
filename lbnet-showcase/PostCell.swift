@@ -17,6 +17,8 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var descriptionText: UITextView!
     @IBOutlet weak var likesLbl: UILabel!
     @IBOutlet weak var likeImg: UIImageView!
+    @IBOutlet weak var postedBy: UILabel!
+    @IBOutlet weak var postedByImg: UIImageView!
     
     var post: Post!
     var request: Request?   //url requests, so we can keep track of and cancel if not needed any more
@@ -54,6 +56,34 @@ class PostCell: UITableViewCell {
         
         self.descriptionText.text = post.postDescription
         self.likesLbl.text = "\(post.likes)"
+  
+        print("Description = \(post.postDescription)")
+        
+        if let pUID = post.postedByUID {
+            // let's look up the nickname for the user who made the post - if post.postedByUID is valid (not nil)
+            print ("pUID= \(pUID)")
+            let nickURL = DataService.ds.REF_USERS.childByAppendingPath(pUID) //.childByAppendingPath("nickname")
+            
+            nickURL.observeSingleEventOfType(.Value, withBlock: { snapshot in
+                if let nickname = snapshot.value.objectForKey("nickname") as? String {
+                    // this does not seem necessary
+                    /*
+                    if snapshot.value is NSNull {
+                        print("The posting user does not have a nickname")
+                    } else {
+                        print("Posting user's nickname is \(nickname)")
+                    }
+                    */
+                    self.postedBy.text = nickname
+                } else {
+                    print("nickname can't be converted")
+                }
+                
+            }, withCancelBlock: { error in
+                print(error.description)
+            })
+        }
+
         
         if post.imageURL != nil {
             if img != nil {
