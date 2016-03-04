@@ -37,19 +37,22 @@ class DataService {
         
     }
     
-    func updateFirebaseUser (nickname: String) {
+    func updateFirebaseUser (key: String, value : String) {
         
-        let post : Dictionary<String,AnyObject> = [ "nickname": nickname]
-        REF_USER_CURRENT.setValue(post)
+        let post : Dictionary<String,AnyObject> = [ key : value ]
+        // this method however erases any other data and only keeps the
+        //    REF_USER_CURRENT.setValue(post)
+        // so the right method to use is
+        REF_USER_CURRENT.updateChildValues(post)
         
     }
     
-    func printMyInfo () {
+    func printCurrentUserURL () {
         let uid = NSUserDefaults.standardUserDefaults().valueForKey(KEY_UID) as! String
-        let user = Firebase(url: "\(URL_BASE)").childByAppendingPath("users").childByAppendingPath(uid)
+        let userUrl = Firebase(url: "\(URL_BASE)").childByAppendingPath("users").childByAppendingPath(uid)
         
-        print(user)
-        
+        print(userUrl)
     }
+    
     
 }

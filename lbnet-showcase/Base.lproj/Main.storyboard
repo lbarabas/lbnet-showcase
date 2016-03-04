@@ -310,6 +310,9 @@
                                             <constraint firstAttribute="width" constant="128" id="x3Z-Vi-uNC"/>
                                         </constraints>
                                         <state key="normal" title="Profile Image"/>
+                                        <connections>
+                                            <action selector="profileImgBtn:" destination="cEr-gZ-6aG" eventType="touchUpInside" id="AKg-qU-q3x"/>
+                                        </connections>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KaH-m3-tVN" customClass="MaterialTextField" customModule="lbnet_showcase" customModuleProvider="target">
                                         <rect key="frame" x="24" y="136" width="516" height="36"/>

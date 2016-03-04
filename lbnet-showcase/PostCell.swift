@@ -20,8 +20,11 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var postedBy: UILabel!
     @IBOutlet weak var postedByImg: UIImageView!
     
+    var postedByProfileUrl : String!
+    
     var post: Post!
     var request: Request?   //url requests, so we can keep track of and cancel if not needed any more
+    var requestUsr: Request? //url request of image to the posting person
     var likeRef: Firebase!
     
     override func awakeFromNib() {
@@ -57,31 +60,66 @@ class PostCell: UITableViewCell {
         self.descriptionText.text = post.postDescription
         self.likesLbl.text = "\(post.likes)"
   
-        print("Description = \(post.postDescription)")
+        //print("Description @ configureCell= \(post.postDescription)")
         
         if let pUID = post.postedByUID {
             // let's look up the nickname for the user who made the post - if post.postedByUID is valid (not nil)
-            print ("pUID= \(pUID)")
+            // print ("pUID= \(pUID)")
             let nickURL = DataService.ds.REF_USERS.childByAppendingPath(pUID) //.childByAppendingPath("nickname")
             
             nickURL.observeSingleEventOfType(.Value, withBlock: { snapshot in
                 if let nickname = snapshot.value.objectForKey("nickname") as? String {
                     // this does not seem necessary
-                    /*
-                    if snapshot.value is NSNull {
-                        print("The posting user does not have a nickname")
-                    } else {
-                        print("Posting user's nickname is \(nickname)")
-                    }
-                    */
+                    // if snapshot.value is NSNull { print("The posting user does not have a nickname") } else { print("Posting user's nickname is \(nickname)") }
                     self.postedBy.text = nickname
                 } else {
                     print("nickname can't be converted")
                 }
                 
+                if let postedByProfileUrl = snapshot.value.objectForKey("profileUrl") as? String {
+                    //print("profileUrl=\(postedByProfileUrl)")
+                    
+
+                    //at this point we have to get the image - should check if in cache....
+                    // imageCache is statis from FeedVC
+
+                    var img: UIImage?
+                    
+                    img = FeedVC.imageCache.objectForKey(postedByProfileUrl) as? UIImage
+
+                    if img != nil {
+                        //image is cached
+                        self.postedByImg.image = img
+                    } else {
+                        
+                        //print("profileUrl=\(postedByProfileUrl)")
+                        self.requestUsr = Alamofire.request(.GET, postedByProfileUrl)
+                        .validate(contentType: ["image/*"])
+                        .response(completionHandler: { (request, response, data, err) in
+                            if err == nil {
+                                if let img = UIImage(data: data!) {
+                                    self.postedByImg.image = img
+                                    //add to cache
+                                    FeedVC.imageCache.setObject(img, forKey: postedByProfileUrl)
+                                }
+                            }
+                        })
+                    }
+
+
+                    
+
+                    
+                }
+                
             }, withCancelBlock: { error in
                 print(error.description)
             })
+        } else {
+            //no ID on the post
+            self.postedByImg.image = UIImage(named: "unknown")
+            self.postedBy.text = "Unknown"
+            
         }
 
         

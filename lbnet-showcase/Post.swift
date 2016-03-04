@@ -18,6 +18,7 @@ class Post {
     private var _postKey: String!
     private var _postRef: Firebase!
     private var _postedByUID: String?
+    //private var _postedByProfileUrl: String?  // the post itself doesn't have the image or the URL to the profile image of the user who made the post - so this shouldn't be here
     
     var postDescription: String { return _postDescription }
     var imageURL: String? { return _imageURL }
