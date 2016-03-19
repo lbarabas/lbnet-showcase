@@ -335,7 +335,7 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="attemptLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5gP-nW-xc1"/>
+                                            <action selector="CancelBtn:" destination="cEr-gZ-6aG" eventType="touchUpInside" id="nvz-0W-FED"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0rM-A3-AVU" customClass="MaterialButton" customModule="lbnet_showcase" customModuleProvider="target">
@@ -351,7 +351,6 @@
                                         </state>
                                         <connections>
                                             <action selector="UpdateBtn:" destination="cEr-gZ-6aG" eventType="touchUpInside" id="tZX-lV-B5I"/>
-                                            <action selector="attemptLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hwX-Wt-EJO"/>
                                         </connections>
                                     </button>
                                 </subviews>

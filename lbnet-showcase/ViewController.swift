@@ -63,7 +63,7 @@ class ViewController: UIViewController {
                         print("logged in!\(authData)")
                         
                         // should be done using the if let syntax...
-                        let user = ["provider": authData.provider!, "blah":"test"]
+                        let user = ["provider": authData.provider!] //, "blah":"test"]
                         DataService.ds.createFirebaseUser(authData.uid, user: user)
                         
                         // saving the UID for the logged in user
@@ -102,7 +102,7 @@ class ViewController: UIViewController {
                                 NSUserDefaults.standardUserDefaults().setValue(result[KEY_UID], forKey: KEY_UID)
                                 DataService.ds.REF_BASE.authUser(email, password: pwd, withCompletionBlock: { err, authData in
                                 
-                                let user = ["provider": authData.provider!, "blah":"email test"]
+                                let user = ["provider": authData.provider!]//, "blah":"email test"]
                                 DataService.ds.createFirebaseUser(authData.uid, user: user)
                                     
                                 }

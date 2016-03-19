@@ -41,9 +41,22 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func CancelBtn(sender: AnyObject) {
+        //self.navigationController!.popViewControllerAnimated(true)
+        
+        self.showErrorAlertAndPop("Cancelled", msg: "No changes were applied to your profile")
+
+    }
+    
     
     @IBAction func UpdateBtn(sender: AnyObject) {
-       saveUpdates()
+        saveUpdates()
+        self.showErrorAlertAndPop("Profile Updated", msg: "Your profile has been updated.")
+        
+        // this doesn't work
+        //self.navigationController?.popViewControllerAnimated(true)
+        // this works but shows a warning in the console
+        //self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
     
@@ -96,7 +109,6 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
                                         print("LINK to profile image: \(imgLink)")
                                         DataService.ds.updateFirebaseUser ("profileUrl", value: imgLink)
                                         self.profileImgChanged = false
-                                        
                                         
                                     }
                                     
@@ -162,10 +174,6 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
                         })
                 }
                 
-                
-                
-                
-                
             }
             
             
@@ -176,6 +184,29 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         
     }
 
+    func showErrorAlertAndPop(title: String, msg: String) {
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: .Alert)
+        let action = UIAlertAction(title: "Ok", style: .Default, handler: {
+            action in
+            self.navigationController?.popToRootViewControllerAnimated(true)
+        })
+        alert.addAction(action)
+        presentViewController(alert, animated: true, completion: nil)
+    
+        /*  example of nested alert msgs
+        let alertController = UIAlertController(title: "Cancelled", message: "No changes were applied to your profile", preferredStyle: .Alert)
+        
+        let callAction = UIAlertAction(title: "Call", style: .Default, handler: {
+            action in
+            let alertMessage = UIAlertController(title: "Service Unavailable", message: "Sorry, the call feature is not available yet. Please retry later.", preferredStyle: .Alert)
+            alertMessage.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            self.presentViewController(alertMessage, animated: true, completion: nil)
+            }
+        )
+        alertController.addAction(okAction)
+        presentViewController(alertController, animated: true, completion: nil)
+        */
+    }
     
     
   }
